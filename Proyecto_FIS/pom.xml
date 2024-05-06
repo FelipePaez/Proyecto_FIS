@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.5</version>
+    <relativePath/> 
+  </parent>
+  <groupId>com.integraservicios</groupId>
+  <artifactId>Main</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>FinalFIS</name>
+  <description>FinalFIS Spring Boot</description>
+
+  <properties>
+    <java.version>11</java.version>
+    <postgresql.version>42.2.24</postgresql.version>
+  </properties>
+
+  <dependencies>
+    <!-- Spring Boot Starter Web para aplicaciones web -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- Spring Boot Starter Data JPA para integración con bases de datos a través de JPA -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- PostgreSQL Driver para integración con PostgreSQL -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${postgresql.version}</version>
+    </dependency>
+
+    <!-- Spring Boot Starter Test para pruebas unitarias -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Maven Compiler Plugin para configurar el compilador de Java -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <release>${java.version}</release>
+        </configuration>
+      </plugin>
+
+      <!-- Maven Surefire Plugin para ejecutar pruebas -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Configuración adicional para la conexión a la base de datos PostgreSQL -->
+  <properties>
+    <spring.jpa.hibernate.ddl-auto>update</spring.jpa.hibernate.ddl-auto>
+    <spring.datasource.url>jdbc:postgresql://localhost:5432/db_name</spring.datasource.url>
+    <spring.datasource.username>your_username</spring.datasource.username>
+    <spring.datasource.password>your_password</spring.datasource.password>
+    <spring.datasource.driver-class-name>org.postgresql.Driver</spring.datasource.driver-class-name>
+  </properties>
+</project>
